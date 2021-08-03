@@ -1,0 +1,5 @@
+### IntelliJ GoLand ###
+.idea
+*.iws
+*.iml
+*.ipr
