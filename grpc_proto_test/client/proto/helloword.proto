@@ -1,0 +1,21 @@
+syntax = "proto3";  // 声明 proto 版本
+
+option go_package = "./;proto"; // 设置package名称 Windows下需要"./;xxx"
+
+service Greeter {
+  rpc SayHello(HelloRequest) returns (HelloReply); // hello接口 protoc-gen-go插件语法
+}
+
+// 定义传输对象
+message HelloRequest {
+  string name = 2; // 1是序号非值
+  string url = 1;
+}
+
+message HelloReply {
+  string message = 1;
+}
+
+// 使用 protoc -I . helloword.proto --go_out=plugins=grpc:.
+
+// go语言中生成的是一个文件，也就只有python会生成两个文件

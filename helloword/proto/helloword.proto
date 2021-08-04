@@ -1,6 +1,7 @@
 syntax = "proto3";  // 声明 proto 版本
 
 option go_package = "./";
+//package proto;
 
 service Hello{
    rpc Hello(HelloRequest) returns (Response); // hello接口 protoc-gen-go插件语法
