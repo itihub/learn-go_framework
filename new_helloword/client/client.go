@@ -28,7 +28,7 @@ func main() {
 	/*
 		1. 这些概念在grpc中都有对应
 		2. 发自灵魂的拷问？ server_proxy 和 client_proxy 能否自动生成 为多种语言生成
-		以上问题都可以满足 这个就是 protobuf + grpc
+		以上问题都可以满足 这个就是 proto + grpc
 	*/
 
 }

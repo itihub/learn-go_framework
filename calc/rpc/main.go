@@ -41,7 +41,7 @@ func RpcPrintln(employee Employee) PrintResult {
 			4. 开始处理业务逻辑
 			5. 将处理的结果 PrintResult 序列化成 json 二进制数据 - 序列化
 			6. 将数据返回
-		序列化和反序列化是可以选择的, 不一定要采用 json、xml、protobuf、msgpack
+		序列化和反序列化是可以选择的, 不一定要采用 json、xml、proto、msgpack
 
 	*/
 
@@ -53,7 +53,7 @@ func main() {
 	/*
 		我们原本的电商系统,这里地方有一段逻辑,这个逻辑是扣减库存,但是库存服务是一个独立的系统, reduce,那如何调用
 		一定会牵到网络, 做成一个web服务(gin、beego、net/httpserver)
-		1. 这个函数的调用参数如何传递-json(json是一种数据格式的协议)/xml/protobuf/msgpack -编码协议
+		1. 这个函数的调用参数如何传递-json(json是一种数据格式的协议)/xml/proto/msgpack -编码协议
 			现在网络调用有两个端-客户端 应该干嘛? 将数据传输到gin
 			gin-服务端,服务端负责解析数据
 	*/

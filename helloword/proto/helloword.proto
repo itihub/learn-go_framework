@@ -1,0 +1,12 @@
+syntax = "proto3";  // 声明 proto 版本
+
+option go_package = "./";
+
+// 定义传输对象
+message HelloRequest {
+   string name = 1; // 1是序号非值
+   int32 age = 2;
+   repeated string courses = 3;
+}
+
+// 使用 protoc -I . helloword.proto --go_out=plugins=grpc:.
