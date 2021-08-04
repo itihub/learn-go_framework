@@ -1,0 +1,22 @@
+syntax = "proto3";  // 声明 proto 版本
+
+option go_package = "./;proto"; // 设置package名称 Windows下需要"./;xxx"
+
+service Greeter {
+  rpc GetStream(StreamReqData) returns (stream StreamResData); // 服务端数据流模式 rpc 调用
+  rpc PutStream(stream StreamReqData) returns (StreamResData); // 客户端数据流模式 rpc 调用
+  rpc AllStream(stream StreamReqData) returns (stream StreamResData); // 双向数据流模式 rpc 调用
+}
+
+// 定义传输对象
+message StreamReqData {
+  string data = 1; // 1是序号非值
+}
+
+message StreamResData {
+  string data = 1;
+}
+
+// 使用 protoc -I . stream.proto --go_out=plugins=grpc:.
+
+// go语言中生成的是一个文件，也就只有python会生成两个文件
