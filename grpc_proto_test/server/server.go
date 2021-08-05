@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"google.golang.org/grpc"
+	"google.golang.org/protobuf/types/known/emptypb"
 	"learngoframework/grpc_proto_test/server/proto"
 	"net"
 )
@@ -18,6 +19,18 @@ func (s *Server) SayHello(ctx context.Context, request *proto.HelloRequest) (*pr
 	// url 与 name 值反了 是因为客户端和服务器端的proto文件的参数顺序不一致导致了
 	return &proto.HelloReply{
 		Message: "hello, " + request.Name,
+		Data: []*proto.HelloReply_Result{
+			&proto.HelloReply_Result{
+				Name: request.Name,
+				Url:  "",
+			},
+		},
+	}, nil
+}
+
+func (s *Server) Ping(ctx context.Context, in *emptypb.Empty) (*proto.Pong, error) {
+	return &proto.Pong{
+		Id: "1",
 	}, nil
 }
 

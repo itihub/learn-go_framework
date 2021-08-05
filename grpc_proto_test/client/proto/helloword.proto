@@ -1,11 +1,9 @@
 syntax = "proto3";  // 声明 proto-bak 版本
-import "base.proto"; // proto文件中import另一个proto文件
-import "google/protobuf/empty.proto"; // 引用proto内建文件 内建文件存放包位置 github.com/golang/protobuf/ptypes
+
 option go_package = "./;proto"; // 设置package名称 Windows下需要"./;xxx"
 
 service Greeter {
   rpc SayHello(HelloRequest) returns (HelloReply); // hello接口 protoc-gen-go插件语法
-  rpc Ping(google.protobuf.Empty) returns (Pong); // 使用Empty占用 （原因：proto必须传递message）
 }
 
 // 定义传输对象
@@ -18,7 +16,6 @@ message HelloReply {
   string message = 1;
 }
 
-
-// 使用 protoc -I . helloword.proto-bak --go_out=plugins=grpc:.
+// 使用 protoc -I . helloword.proto --go_out=plugins=grpc:.
 
 // go语言中生成的是一个文件，也就只有python会生成两个文件

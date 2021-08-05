@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option go_package = "./;proto";
+
+message Empty {}
+
+message Pong {
+    string id = 1;
+}
+
+
+// protoc -I . base.proto --go_out=plugins=grpc:.

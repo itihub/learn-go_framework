@@ -1,19 +1,30 @@
-syntax = "proto3";  // 声明 proto 版本
-
+syntax = "proto3";  // 声明 proto-bak-bak 版本
+import "base.proto"; // proto文件中import另一个proto文件
+import "google/protobuf/empty.proto"; // 引用proto内建文件 内建文件存放包位置 github.com/golang/protobuf/ptypes
 option go_package = "./;proto"; // 设置package名称 Windows下需要"./;xxx"
 
 service Greeter {
   rpc SayHello(HelloRequest) returns (HelloReply); // hello接口 protoc-gen-go插件语法
+  rpc Ping(google.protobuf.Empty) returns (Pong); // 使用Empty占用 （原因：proto必须传递message）
 }
 
 // 定义传输对象
 message HelloRequest {
-  string name = 1; // 1是序号非值
-  string url = 2;
+  string name = 2; // 1是序号非值
+  string url = 1;
 }
 
 message HelloReply {
   string message = 1;
+
+  message Result {
+    string name = 1;
+    string url = 2;
+  }
+
+  // 嵌套message对象方式 内部嵌套 与 外部公用对象嵌套
+  repeated Result data = 2;
+
 }
 
 // 使用 protoc -I . helloword.proto --go_out=plugins=grpc:.

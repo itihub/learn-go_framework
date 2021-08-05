@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 	"google.golang.org/grpc"
-	"learngoframework/grpc_proto_test/client/proto-bak"
+	"learngoframework/grpc_proto_test/client/proto"
 )
 
 func main() {
@@ -14,9 +14,9 @@ func main() {
 	}
 	defer conn.Close() // 关闭连接
 
-	c := proto_bak.NewGreeterClient(conn) // 生成客户端
+	c := proto.NewGreeterClient(conn) // 生成客户端
 
-	r, err := c.SayHello(context.Background(), &proto_bak.HelloRequest{
+	r, err := c.SayHello(context.Background(), &proto.HelloRequest{
 		Name: "bobby",
 		Url:  "http://example.com",
 	})
