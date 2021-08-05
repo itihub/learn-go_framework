@@ -19,6 +19,7 @@ func main() {
 	r, err := c.SayHello(context.Background(), &proto.HelloRequest{
 		Name: "bobby",
 		Url:  "http://example.com",
+		G:    proto.Gender_FEMALE, // 使用枚举类型
 	})
 	if err != nil {
 		panic(err)
