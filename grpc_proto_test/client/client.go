@@ -20,6 +20,9 @@ func main() {
 		Name: "bobby",
 		Url:  "http://example.com",
 		G:    proto.Gender_FEMALE, // 使用枚举类型
+		Mp: map[string]string{
+			"key": "value",
+		},
 	})
 	if err != nil {
 		panic(err)

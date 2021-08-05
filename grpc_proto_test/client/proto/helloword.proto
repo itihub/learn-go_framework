@@ -11,6 +11,7 @@ message HelloRequest {
   string name = 2; // 1是序号非值
   string url = 1;
   Gender g = 3;
+  map<string, string> mp = 4; // Map类型
 }
 
 // 枚举类型
