@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+message Empty {}
+
+message Pong {
+    string id = 1;
+}

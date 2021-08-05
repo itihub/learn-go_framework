@@ -1,0 +1,8 @@
+syntax = "proto3";
+import "base.proto"; // proto文件中import另一个proto文件
+
+option go_package = "./;proto";
+
+service Greeter {
+    rpc Ping(Empty) returns (Pong); //健康检查
+}

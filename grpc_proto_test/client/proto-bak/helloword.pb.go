@@ -2,9 +2,9 @@
 // versions:
 // 	protoc-gen-go v1.26.0
 // 	protoc        v3.17.3
-// source: helloword.proto
+// source: helloword.proto-bak
 
-package proto
+package proto_bak
 
 import (
 	context "context"
@@ -299,5 +299,5 @@ var _Greeter_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "helloword.proto",
+	Metadata: "helloword.proto-bak",
 }
