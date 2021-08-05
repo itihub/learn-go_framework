@@ -2,6 +2,8 @@ syntax = "proto3";  // 声明 proto-bak 版本
 
 option go_package = "./;proto"; // 设置package名称 Windows下需要"./;xxx"
 
+import "google/protobuf/timestamp.proto"; // 引入内建时间戳类型
+
 service Greeter {
   rpc SayHello(HelloRequest) returns (HelloReply); // hello接口 protoc-gen-go插件语法
 }
@@ -12,6 +14,7 @@ message HelloRequest {
   string url = 1;
   Gender g = 3;
   map<string, string> mp = 4; // Map类型
+  google.protobuf.Timestamp addTime = 5; // 时间戳类型
 }
 
 // 枚举类型

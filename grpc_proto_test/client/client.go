@@ -4,7 +4,9 @@ import (
 	"context"
 	"fmt"
 	"google.golang.org/grpc"
+	"google.golang.org/protobuf/types/known/timestamppb"
 	"learngoframework/grpc_proto_test/client/proto"
+	"time"
 )
 
 func main() {
@@ -23,6 +25,7 @@ func main() {
 		Mp: map[string]string{
 			"key": "value",
 		},
+		AddTime: timestamppb.New(time.Now()), // protobuf 内建时间戳类型
 	})
 	if err != nil {
 		panic(err)
