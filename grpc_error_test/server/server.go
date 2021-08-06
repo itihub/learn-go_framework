@@ -3,10 +3,9 @@ package main
 import (
 	"context"
 	"google.golang.org/grpc"
-	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/status"
 	"learngoframework/grpc_error_test/proto"
 	"net"
+	"time"
 )
 
 type Server struct {
@@ -15,12 +14,15 @@ type Server struct {
 // 业务逻辑 提供接口/函数
 func (s *Server) SayHello(ctx context.Context, request *proto.HelloRequest) (*proto.HelloReply, error) {
 
-	//return nil, status.Error(codes.InvalidArgument, "invalid username")
-	return nil, status.Errorf(codes.NotFound, "记录未找到:%s", request.Name)
+	// grpc 错误信息
+	//return nil, status.Error(codes.InvalidArgument, "invalgrpcname")
+	//return nil, status.Errorf(codes.NotFound, "记录未找到:%s", request.Name)
 
-	//return &proto.HelloReply{
-	//	Message: "hello, " + request.Name,
-	//}, nil
+	time.Sleep(time.Second * 5) // 模拟超时
+
+	return &proto.HelloReply{
+		Message: "hello, " + request.Name,
+	}, nil
 }
 
 func main() {

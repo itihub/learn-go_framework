@@ -6,6 +6,7 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/status"
 	"learngoframework/grpc_error_test/proto"
+	"time"
 )
 
 func main() {
@@ -17,7 +18,9 @@ func main() {
 
 	c := proto.NewGreeterClient(conn) // 生成客户端
 
-	r, err := c.SayHello(context.Background(), &proto.HelloRequest{
+	ctx, _ := context.WithTimeout(context.Background(), time.Second*3) // 设置超时时间
+
+	r, err := c.SayHello(ctx, &proto.HelloRequest{
 		Name: "bobby",
 	})
 	if err != nil {
