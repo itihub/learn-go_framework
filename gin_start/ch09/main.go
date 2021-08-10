@@ -17,6 +17,8 @@ func main() {
 	dir, _ := filepath.Abs(filepath.Dir(os.Args[0]))
 	fmt.Println(dir)
 
+	router.Static("/static", "./static") // 静态文件处理 第一个参数：请求路径;第二个参数：相对存放路径
+
 	// 加载目录下的所有文件
 	//router.LoadHTMLGlob("templates/*")
 
