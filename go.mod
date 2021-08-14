@@ -10,6 +10,7 @@ require (
 	github.com/go-playground/universal-translator v0.17.0
 	github.com/go-playground/validator/v10 v10.4.1
 	github.com/golang/protobuf v1.5.2
+	github.com/hashicorp/consul/api v1.1.0
 	github.com/kirinlabs/HttpRequest v1.1.1
 	github.com/spf13/viper v1.8.1
 	google.golang.org/grpc v1.39.0
