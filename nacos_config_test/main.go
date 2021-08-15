@@ -1,10 +1,12 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"github.com/nacos-group/nacos-sdk-go/clients"
 	"github.com/nacos-group/nacos-sdk-go/common/constant"
 	"github.com/nacos-group/nacos-sdk-go/vo"
+	"learngoframework/nacos_config_test/config"
 	"time"
 )
 
@@ -45,7 +47,7 @@ func main() {
 
 	// 从nacos读取配置文件
 	content, err := configClient.GetConfig(vo.ConfigParam{
-		DataId: "user-web.yaml",
+		DataId: "user-web.json",
 		Group:  "dev",
 	})
 
@@ -53,11 +55,16 @@ func main() {
 		panic(err)
 	}
 
-	fmt.Println(content) // yaml 格式字符串
+	fmt.Println(content) // json 格式字符串
+
+	serverConfig := config.ServerConfig{}
+	// 想要将字符串转成json,需要去设置这个struct的tag
+	json.Unmarshal([]byte(content), &serverConfig) // json 转换成 struct
+	fmt.Println(serverConfig)
 
 	//监听配置变化
 	err = configClient.ListenConfig(vo.ConfigParam{
-		DataId: "user-web.yaml",
+		DataId: "user-web.json",
 		Group:  "dev",
 		OnChange: func(namespace, group, dataId, data string) {
 			fmt.Println("配置文件产生变化...")
