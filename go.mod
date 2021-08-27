@@ -14,6 +14,7 @@ require (
 	github.com/kirinlabs/HttpRequest v1.1.1
 	github.com/mbobakov/grpc-consul-resolver v1.4.4
 	github.com/nacos-group/nacos-sdk-go v1.0.8
+	github.com/olivere/elastic/v7 v7.0.27
 	github.com/spf13/viper v1.8.1
 	google.golang.org/grpc v1.39.0
 	google.golang.org/protobuf v1.26.0
